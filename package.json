@@ -1,7 +1,7 @@
 {
-  "name": "@editorjs/attaches",
-  "version": "1.3.0",
-  "repository": "https://github.com/editor-js/attaches",
+  "name": "@egg-/editor-js-attaches",
+  "version": "1.3.1",
+  "repository": "https://github.com/egg-/editor-js-attaches",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",

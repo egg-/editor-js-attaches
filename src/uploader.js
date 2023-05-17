@@ -66,6 +66,7 @@ export default class Uploader {
       this.onError(message);
     });
   }
+
   /**
    * Handle clicks on the upload file button
    * Fires ajax.post()

@@ -91,6 +91,7 @@ export default class AttachesTool {
       errorMessage: config.errorMessage || 'File upload failed',
       uploader: config.uploader || undefined,
       additionalRequestHeaders: config.additionalRequestHeaders || {},
+      titleEditable: config.titleEditable === undefined ? true : config.titleEditable,
     };
 
     if (data !== undefined && !isEmpty(data)) {
@@ -460,7 +461,7 @@ export default class AttachesTool {
     const fileInfo = make('div', this.CSS.fileInfo);
 
     this.nodes.title = make('div', this.CSS.title, {
-      contentEditable: this.readOnly === false,
+      contentEditable: this.readOnly === false && this.config.titleEditable === true,
     });
 
     this.nodes.title.dataset.placeholder = this.api.i18n.t('File title');
