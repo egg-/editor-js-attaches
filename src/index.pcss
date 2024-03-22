@@ -1,24 +1,25 @@
 .cdx-attaches {
   --color-line: #EFF0F1;
-  --color-bg: #fff;
-  --color-bg-secondary: #F8F8F8;
+  --color-bg: #f7f7f7;
+  --color-bg-secondary: #fff;
   --color-bg-secondary--hover: #f2f2f2;
-  --color-text-secondary: #707684;
+  --color-text-secondary: #C1C1C1;
 
   &--with-file {
     display: flex;
     align-items: center;
     padding: 10px 12px;
-    border: 1px solid var(--color-line);
-    border-radius: 7px;
+    border-radius: 8px;
     background: var(--color-bg);
+    line-height: 32px;
+    gap: 5px;
 
     ^&__file-info {
-      display: grid;
+      display: flex;
+      align-items: center;
       grid-gap: 4px;
       max-width: calc(100% - 80px);
-      margin: auto 0;
-      flex-grow: 2;
+      margin: 0;
     }
 
     ^&__download-button {
@@ -41,56 +42,39 @@
     }
 
     ^&__file-icon {
-      position: relative;
-
-      &-background {
-        background-color: #333;
-
-        width: 27px;
-        height: 30px;
-        margin-right: 12px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        @supports(-webkit-mask-box-image: url('')){
-          border-radius: 0;
-          -webkit-mask-box-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10.3872C0 1.83334 1.83334 0 10.3872 0H13.6128C22.1667 0 24 1.83334 24 10.3872V13.6128C24 22.1667 22.1667 24 13.6128 24H10.3872C1.83334 24 0 22.1667 0 13.6128V10.3872Z' fill='black'/%3E%3C/svg%3E%0A") 48% 41% 37.9% 53.3%;;
-        }
-      }
-
-      &-label {
-        position: absolute;
-        left: 3px;
-        top: 11px;
-        background: inherit;
-        text-transform: uppercase;
-        line-height: 1em;
-        color: #fff;
-        padding: 1px 2px;
-        border-radius: 3px;
-        font-size: 10px;
-        font-weight: bold;
-        /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.22); */
-        font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
-        letter-spacing: 0.02em;
-      }
-
       & svg {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
       }
-
-      & path {
-        stroke: #fff;
+      &.jpg {
+        color: #15AA55;
+      }
+      &.etc {
+        color: #3D3D3D;
+      }
+      &.pdf {
+        color: #EA1D22;
+      }
+      &.ppt {
+        color: #FF9900;
+      }
+      &.xls {
+        color: #15AA55;
+      }
+      &.txt {
+        color: #595BFD;
+      }
+      &.zip {
+        color: #FFC700;
+      }
+      &.mp4 {
+        color: #8B8CFF;
       }
     }
 
     ^&__size {
       color: var(--color-text-secondary);
       font-size: 12px;
-      line-height: 1em;
 
       &::after {
         content: attr(data-size);
@@ -103,10 +87,9 @@
       text-overflow: ellipsis;
       overflow: hidden;
       outline: none;
-      max-width: 90%;
       font-size: 14px;
       font-weight: 500;
-      line-height: 1em;
+      color: #3D3D3D;
     }
 
     ^&__title:empty::before {

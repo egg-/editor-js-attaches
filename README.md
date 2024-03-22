@@ -1,3 +1,7 @@
+# egg- Fork Version
+
+Customized UI
+
 # Attaches Tool
 
 Tool for the [Editor.js](https://editorjs.io).
@@ -52,49 +56,48 @@ var editor = EditorJS({
 
 Attaches Tool supports these configuration parameters:
 
-| Field | Type     | Description        |
-| ----- | -------- | ------------------ |
-| endpoint | `string` | Optional endpoint for file uploading or use uploader |
-| uploader | `{uploadByFile: function}` |Optional custom uploading method or use endpoint|
-| field | `string` | (default: `file`) Name of uploaded file field in POST request |
-| types | `string` | (default: `*`) Mime-types of files that can be [accepted with file selection](https://github.com/codex-team/ajax#accept-string).|
-| buttonText | `string` | (default: `Select file`) Placeholder for file upload button |
-| errorMessage | `string` | (default: `File upload failed`) Message to show if file upload failed |
-| additionalRequestHeaders | `object` | (default: `{}`) Object with any custom headers which will be added to request. Example: `{"X-CSRF-TOKEN": "W5fe2...hR8d1"}` |
-
+| Field                    | Type                       | Description                                                                                                                      |
+| ------------------------ | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| endpoint                 | `string`                   | Optional endpoint for file uploading or use uploader                                                                             |
+| uploader                 | `{uploadByFile: function}` | Optional custom uploading method or use endpoint                                                                                 |
+| field                    | `string`                   | (default: `file`) Name of uploaded file field in POST request                                                                    |
+| types                    | `string`                   | (default: `*`) Mime-types of files that can be [accepted with file selection](https://github.com/codex-team/ajax#accept-string). |
+| buttonText               | `string`                   | (default: `Select file`) Placeholder for file upload button                                                                      |
+| errorMessage             | `string`                   | (default: `File upload failed`) Message to show if file upload failed                                                            |
+| additionalRequestHeaders | `object`                   | (default: `{}`) Object with any custom headers which will be added to request. Example: `{"X-CSRF-TOKEN": "W5fe2...hR8d1"}`      |
 
 ## Output data
 
 This Tool returns `data` with following format
 
-| Field          | Type      | Description                     |
-| -------------- | --------- | ------------------------------- |
-| file           | `object`  | Uploaded file data. Data received from backend uploader. See description below. |
-| title | `string` | File's title. Initially set as uploaded file name. Can be modified by user.          |
+| Field | Type     | Description                                                                     |
+| ----- | -------- | ------------------------------------------------------------------------------- |
+| file  | `object` | Uploaded file data. Data received from backend uploader. See description below. |
+| title | `string` | File's title. Initially set as uploaded file name. Can be modified by user.     |
 
 ### file object <a name="file-object"></a>
 
 Object `file` consists of the following fields. All of them are optional, `size` and `extension` are supported by design.
 
-| Field          | Type      | Description                       |
-| -------------- | --------- | ----------------------------------|
-| url            |`string`   | Full public path of uploaded file |
-| size           |`number`   | File's size (expected in bytes, according to Tool's design)                      |
-| name           |`string`   | File's name                       |
-| extension      |`string`   | File's extension                  |
+| Field     | Type     | Description                                                 |
+| --------- | -------- | ----------------------------------------------------------- |
+| url       | `string` | Full public path of uploaded file                           |
+| size      | `number` | File's size (expected in bytes, according to Tool's design) |
+| name      | `string` | File's name                                                 |
+| extension | `string` | File's extension                                            |
 
 ```json
 {
-    "type" : "attaches",
-    "data" : {
-        "file": {
-            "url" : "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg",
-            "size": 91,
-            "name": "hero.jpg",
-            "extension": "jpg"
-        },
-        "title": "Hero"
-    }
+  "type": "attaches",
+  "data": {
+    "file": {
+      "url": "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg",
+      "size": 91,
+      "name": "hero.jpg",
+      "extension": "jpg"
+    },
+    "title": "Hero"
+  }
 }
 ```
 
@@ -104,11 +107,11 @@ Response of your uploader **should** cover following format:
 
 ```json5
 {
-    "success" : 1,
-    "file": {
-        // any data you want
-        // for example: url, name, size, title
-    }
+  success: 1,
+  file: {
+    // any data you want
+    // for example: url, name, size, title
+  }
 }
 ```
 
@@ -118,10 +121,10 @@ Response of your uploader **should** cover following format:
 
 Fields supported by the UI of block:
 
- - `title`
- - `size`
- - `extension` (if not present, will be extracted from the `name`)
- - `url`
+- `title`
+- `size`
+- `extension` (if not present, will be extracted from the `name`)
+- `url`
 
 ## Providing custom uploading methods
 
@@ -129,10 +132,9 @@ As mentioned at the Config Params section, you have an ability to provide own cu
 It is a quite simple: implement `uploadByFile` method and pass them via `uploader` config param.
 The method return a Promise that resolves with response in a format that described at the [backend response format](#backend-response-format) section.
 
-
-| Method         | Arguments | Return value | Description |
-| -------------- | --------- | -------------| ------------|
-| uploadByFile   | `File`    | `{Promise.<{success, file: {url}}>}` | Upload file to the server and return an uploaded file data |
+| Method       | Arguments | Return value                         | Description                                                |
+| ------------ | --------- | ------------------------------------ | ---------------------------------------------------------- |
+| uploadByFile | `File`    | `{Promise.<{success, file: {url}}>}` | Upload file to the server and return an uploaded file data |
 
 Example:
 
